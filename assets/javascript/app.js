@@ -10,4 +10,33 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  
+
+var database = firebase.database();
+
+var train = "";
+var place = "";
+var time = "";
+var frequency = "";
+
+
+$("#submit").on("click", function(event){
+    event.preventDefault();
+
+    train = $("#train-name").val();
+    place = $("#destination").val();
+    time = $("#first-train-time").val();
+    frequency = $("#frequency").val();
+
+    console.log(train, place, time, frequency);
+
+    database.ref().push({
+        train,
+        place,
+        time,
+        frequency
+    });
+
+    $("form").trigger("reset");
+});
+
+

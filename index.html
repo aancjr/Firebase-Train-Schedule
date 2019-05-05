@@ -11,7 +11,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 </head>
 
 <body>
@@ -84,12 +84,13 @@
                         <label for="formGroupExampleInput2">Frequency (Min)</label>
                         <input type="number" class="form-control" id="frequency" placeholder=" ">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <script src="./assets/javascript/app.js" async defer></script>
 </body>
 
 </html>
