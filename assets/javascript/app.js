@@ -42,8 +42,21 @@ database.ref().on("child_added", function(childSnapshot){
     var timeStamp = childSnapshot.val().time;
     var frequencyStamp = childSnapshot.val().frequency;
 
-    var reformatTime = moment(timeStamp, "HH:mm");
-    console.log(reformatTime)
+    // var m = moment(timeStamp, "hh:mm a");
+
+    // var reformatTime = m.format(timeStamp, "HH:mm");
+    // console.log(m)
+
+
+
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainStamp),
+        $("<td>").text(placeStamp),
+        $("<td>").text(timeStamp),
+        $("<td>").text(frequencyStamp),
+    )
+
+    $("#train-table").append(newRow);
 
 })
 
