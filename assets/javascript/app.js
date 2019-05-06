@@ -11,21 +11,16 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+
 var database = firebase.database();
-
-var train = "";
-var place = "";
-var time = "";
-var frequency = "";
-
 
 $("#submit").on("click", function(event){
     event.preventDefault();
 
-    train = $("#train-name").val();
-    place = $("#destination").val();
-    time = $("#first-train-time").val();
-    frequency = $("#frequency").val();
+    var train = $("#train-name").val();
+    var place = $("#destination").val();
+    var time = $("#first-train-time").val();
+    var frequency = $("#frequency").val();
 
     console.log(train, place, time, frequency);
 
@@ -38,5 +33,20 @@ $("#submit").on("click", function(event){
 
     $("form").trigger("reset");
 });
+
+database.ref().on("child_added", function(childSnapshot){
+    console.log(childSnapshot.val());
+
+    var trainStamp = childSnapshot.val().train;
+    var placeStamp = childSnapshot.val().place;
+    var timeStamp = childSnapshot.val().time;
+    var frequencyStamp = childSnapshot.val().frequency;
+
+    var reformatTime = moment(timeStamp, "HH:mm");
+    console.log(reformatTime)
+
+})
+
+
 
 
