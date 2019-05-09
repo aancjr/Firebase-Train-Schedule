@@ -42,18 +42,28 @@ database.ref().on("child_added", function(childSnapshot){
     var timeStamp = childSnapshot.val().time;
     var frequencyStamp = childSnapshot.val().frequency;
 
-    // var m = moment(timeStamp, "hh:mm a");
+    var convertedTime = moment(timeStamp, "HH:mm");
+    var minutesAway = (convertedTime.toNow());
 
-    // var reformatTime = m.format(timeStamp, "HH:mm");
-    // console.log(m)
+    console.log(moment().toNow)
 
+    var timeDiff = moment().diff(moment(convertedTime), "minutes")
 
+    var tRemainder = timeDiff % frequencyStamp;
+
+    var tMinutesUntil = frequencyStamp - tRemainder;
+
+    var nextTrain = moment().add(tMinutesUntil, "minutes");
+    
+    var nextArrival = moment(nextTrain).format("HH:mm");
+    console.log(tMinutesUntil)
 
     var newRow = $("<tr>").append(
         $("<td>").text(trainStamp),
         $("<td>").text(placeStamp),
-        $("<td>").text(timeStamp),
+        $("<td>").text(nextArrival),
         $("<td>").text(frequencyStamp),
+        $("<td>").text(tMinutesUntil),
     )
 
     $("#train-table").append(newRow);
